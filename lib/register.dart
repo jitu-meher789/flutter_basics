@@ -1,10 +1,12 @@
-
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_final_fields, unused_field, prefer_const_literals_to_create_immutables, dead_code
 
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/homePage.dart';
 import 'package:flutter_basics/login.dart';
 import 'package:flutter_basics/main.dart';
 import 'package:flutter_basics/myProfile.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+import 'package:flutter/src/material/icons.dart';
 
 class register extends StatefulWidget {
   const register({super.key});
@@ -14,210 +16,260 @@ class register extends StatefulWidget {
 }
 
 class _registerState extends State<register> {
+  final formKey = GlobalKey<FormState>();
+  String username = '';
+  String email = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
-      return Container(
+    return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/login.png'),fit: BoxFit.cover,),
+          image: AssetImage('assets/images/login.png'),
+          fit: BoxFit.cover,
+        ),
       ),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("Sign up", style: TextStyle(fontSize: 20),),
           titleSpacing: 5.0,
-          centerTitle: false,
+          centerTitle: true,
           toolbarHeight: 80.2,
           toolbarOpacity: 0.8,
           shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(25),
-              bottomLeft: Radius.circular(25)),
+            borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(25),
+                bottomLeft: Radius.circular(25)),
           ),
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new,color: Color.fromARGB(137, 253, 253, 253),size:30,),
-            onPressed: () {
-            },
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: Color.fromARGB(137, 253, 253, 253),
+              size: 30,
+            ),
+            onPressed: () {},
           ),
           elevation: 0.00,
-          backgroundColor:  Color.fromARGB(255, 84, 55, 117),
+          backgroundColor: Color.fromARGB(255, 84, 55, 117),
         ),
-        backgroundColor: Colors.black,
-        body: SingleChildScrollView(
-          child: Container(
-            child: Stack(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 100, left: 35),
-                  child: Text('Log in with one of the following options.',style: TextStyle(fontSize: 17,color: Colors.white24),),
-                ),
-                Container(
-                  width: 600,
-                  padding: EdgeInsets.only(top: 150),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Container(
-                        child: ElevatedButton.icon(
-                          onPressed: (){},
-                          icon: Icon(
-                              Icons.mail_rounded,
-                              color: Colors.white,
-                              size: 30.0,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 11, 14, 14),
-                              padding: EdgeInsets.only(left: 50, right: 60,top: 20, bottom: 20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              side: const BorderSide(
-                                width: 2.0,
-                                color: Color.fromARGB(255, 38, 38, 39),
-                              ),
-                            ),label: Text(''),
-                        )
+        backgroundColor: Color.fromARGB(255, 19, 19, 19),
+
+        body: Container( 
+          padding: EdgeInsets.only(left: 10, right: 10,top: 80),
+          
+            child: Form(
+              key: formKey,
+              child: ListView(
+                padding: EdgeInsets.all(16),
+                children: [
+                  TextFormField(
+                    style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                    decoration: InputDecoration(
+                      labelText: "User Name",
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
                       ),
-                      Container(
-                        child: ElevatedButton.icon(
-                          onPressed: (){},
-                          icon: Icon(
-                              Icons.apple,
-                              color: Colors.white,
-                              size: 30.0,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 11, 14, 14),
-                              padding: EdgeInsets.only(left: 60, right: 50,top: 20, bottom: 20),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              side: const BorderSide(
-                                width: 2.0,
-                                color: Color.fromARGB(255, 38, 38, 39),
-                              ),
-                            ), label: Text(''),                       
+                      hintText: "User Name",
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 84, 55, 117),
+                          width: 1.5,
                         ),
                       ),
-                    ],
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(0.0),
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.grey,
+                        ), // icon is 48px widget.
+                      ),
+                    ),
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "enter you name"),
+                      MinLengthValidator(6, errorText: "User name must be atleat  6 characters"),
+                    ]),                    
+
                   ),
-                ),
-                SingleChildScrollView(
-                  child: Container(
-                    padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.3,
-                      right: 35,
-                      left: 35,
+                  SizedBox( 
+                    height: 30,
+                  ),
+                  TextFormField(
+                    obscureText: true,
+                    style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
                       ),
-                    child: Column(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        TextField( 
-                          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)), 
-                          decoration: InputDecoration(
-                            filled: true,
-                            fillColor: Color.fromARGB(255, 11, 14, 14),
-                            hintText: 'Name',
-                            labelText: 'Name',
-                            hintStyle: TextStyle(color: Colors.white24),
-                            labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(  
-                            borderSide: BorderSide(color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
-                            borderRadius: BorderRadius.circular(10),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color.fromARGB(255, 38, 38, 39), width: 2.0),
-                            borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                      hintText: "Password",
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 84, 55, 117),
+                          width: 1.5,
                         ),
-                        SizedBox(
-                          height: 30,
+                      ),
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(0.0),
+                        child: Icon(
+                          Icons.lock,
+                          color: Colors.grey,
+                        ), // icon is 48px widget.
+                      ), 
+                    ),
+                     validator: MultiValidator([
+                      RequiredValidator(errorText: "enter a valid password"),
+                      MinLengthValidator(4, errorText: "password must be atleast 4 digits"),
+                      MaxLengthValidator(10, errorText: "password must be less than 10 digits"),
+                    ]),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
+                      ),
+                      hintText: "Email",
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 84, 55, 117),
+                          width: 1.5,
                         ),
-                        TextField(
-                          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)), 
-                          decoration: InputDecoration(
-                            fillColor: Color.fromARGB(255, 11, 14, 14),
-                            filled: true,
-                            hintText: 'Email',
-                            labelText: 'Email',
-                            hintStyle: TextStyle(color: Colors.white24),
-                            labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(  
-                            borderSide: BorderSide(color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
-                            borderRadius: BorderRadius.circular(10),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color.fromARGB(255, 38, 38, 39), width: 2.0),
-                            borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
+                      ),
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(0.0),
+                        child: Icon(
+                          Icons.email,
+                          color: Colors.grey,
+                        ), // icon is 48px widget.
+                      ),
+                    ),
+                     validator: MultiValidator([
+                      RequiredValidator(errorText: "enter you name"),
+                      EmailValidator(errorText: "Enter a valid email address"),
+                    ]),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    keyboardType: TextInputType.phone,
+                    style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                    decoration: InputDecoration(
+                      labelText: "Mobile",
+                      labelStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
+                      ),
+                      hintText: "Mobile",
+                      hintStyle: TextStyle(
+                        color: Color.fromARGB(255, 152, 154, 156),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 20,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30),
+                        borderSide: BorderSide(
+                          color: Color.fromARGB(255, 84, 55, 117),
+                          width: 1.5,
                         ),
-                        SizedBox(
-                          height: 30,
+                      ),
+                      prefixIcon: Padding(
+                        padding: EdgeInsets.all(0.0),
+                        child: Icon(
+                          Icons.email,
+                          color: Colors.grey,
+                        ), // icon is 48px widget.
+                      ),
+                    ),
+                    validator: MultiValidator([
+                      RequiredValidator(errorText: "enter phone no"),
+                      EmailValidator(errorText: "Enter a valid phone no"),
+                      MinLengthValidator(10, errorText: "Enter valid phone number"),
+                    ]),
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  SizedBox(
+                    width: 100, // <-- Your width
+                    height: 60, // <-- Your height
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 84, 55, 117), // background (button) color
+                        foregroundColor: Colors.white,
+                        textStyle: TextStyle(fontSize: 19,fontWeight: FontWeight.bold), // foreground (text) color
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        TextField(
-                          style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)), 
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            fillColor: Color.fromARGB(255, 11, 14, 14),
-                            filled: true,
-                            hintText: 'pick a strong password',
-                            hintStyle: TextStyle(color: Colors.white24),
-                            labelText: 'Password',
-                            labelStyle: TextStyle(color: Colors.white),
-                            focusedBorder: OutlineInputBorder(  
-                            borderSide: BorderSide(color: Color.fromARGB(255, 84, 55, 117), width: 2.0),
-                            borderRadius: BorderRadius.circular(10),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Color.fromARGB(255, 38, 38, 39), width: 2.0),
-                            borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
-                          SizedBox(
-                          height: 30,
-                        ),
-                       Container(
-                         child: ElevatedButton(
-                            onPressed: (){
-                               Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => const homePage()));
-                            },
-                            child: Text('Create Account',style: TextStyle(fontSize: 20),),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 84, 55, 117),
-                              padding: EdgeInsets.only(left: 90, right: 90,top: 18, bottom: 18),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                              )
-                            ),
-                          ),
-                       ),
-                       Row(
+                      ),
+                      onPressed: () {},
+                      child: const Text("Create Account"),
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Container(
+                    child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            child: Text('Already have an account?', 
+                            child: Text('Dont have an account?', 
                             style: TextStyle(fontSize: 17,color: Colors.white24)),
                           ),
                           Container(
                             child: TextButton(onPressed: (){
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Mylogin(title: '')));
-                            }, child: Text('Log in', style: TextStyle(color: Color.fromARGB(255, 84, 55, 117),fontWeight: FontWeight.w900),)),
+                                MaterialPageRoute(builder: (context) => const register()));
+                            }, child: Text('Sign up', style: TextStyle(color: Color.fromARGB(255, 84, 55, 117),fontWeight: FontWeight.w900),)),
                           )
                         ],
-                       ) 
-                      ],
-                    ),
-                  ),
-                )
-              ],
+                       ),
+                  )
+                ],
+              ),
             ),
-          ),
+          
         ),
       ),
     );
