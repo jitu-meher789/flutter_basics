@@ -22,7 +22,7 @@ _navigatetohome() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Color.fromARGB(255, 84, 55, 117),
+      backgroundColor:  Colors.deepPurple,
       body: Center(         
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

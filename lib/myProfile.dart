@@ -22,12 +22,12 @@ class _myProfileState extends State<myProfile> {
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 26, 24, 24),
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 84, 55, 117),
+          backgroundColor: Colors.deepPurple,
           title: Text('My Profile'),
           centerTitle: true,
         ),
         bottomNavigationBar: CurvedNavigationBar(
-          color: Color.fromARGB(255, 84, 55, 117),
+          color: Colors.deepPurple,
           backgroundColor: Color.fromARGB(255, 26, 24, 24),
           height: 60,
           items: [
@@ -54,13 +54,13 @@ class _myProfileState extends State<myProfile> {
                 Container(
                   height: 140,
                   decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 84, 55, 117),
+                      color: Colors.deepPurple,
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30),
                       ),
                       border: Border.all(
-                        color: Color.fromARGB(255, 43, 2, 97),
+                        color: Colors.deepPurple,
                         style: BorderStyle.solid,
                       )),
                   child: Row(
@@ -71,7 +71,7 @@ class _myProfileState extends State<myProfile> {
                             color: Color.fromARGB(255, 240, 226, 255),
                             borderRadius: BorderRadius.circular(60),
                             border: Border.all(
-                              color: Color.fromARGB(255, 43, 2, 97),
+                              color: Colors.deepPurple,
                               style: BorderStyle.solid,
                             )),
                         // color: Colors.white,
@@ -115,7 +115,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 84, 55, 117),
+                    color: Colors.deepPurple,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -125,9 +125,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 84, 55, 117),
+                          color: Colors.deepPurple,
                           border: Border.all(
-                            color: Color.fromARGB(255, 118, 91, 150),
+                            color: Colors.deepPurple,
                           ),
                         ),
                         child: Column(
@@ -156,9 +156,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 84, 55, 117),
+                          color: Colors.deepPurple,
                           border: Border.all(
-                            color: Color.fromARGB(255, 118, 91, 150),
+                            color: Colors.deepPurple,
                           ),
                         ),
                         child: Column(
@@ -193,7 +193,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 84, 55, 117),
+                    color: Colors.deepPurple,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -203,9 +203,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 84, 55, 117),
+                          color: Colors.deepPurple,
                           border: Border.all(
-                            color: Color.fromARGB(255, 118, 91, 150),
+                            color: Colors.deepPurple,
                           ),
                         ),
                         child: Column(
@@ -234,9 +234,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 84, 55, 117),
+                          color: Colors.deepPurple,
                           border: Border.all(
-                            color: Color.fromARGB(255, 118, 91, 150),
+                            color: Colors.deepPurple,
                           ),
                         ),
                         child: Column(
@@ -271,7 +271,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 84, 55, 117),
+                    color: Colors.deepPurple,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -282,9 +282,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 84, 55, 117),
+                          color: Colors.deepPurple,
                           border: Border.all(
-                            color: Color.fromARGB(255, 118, 91, 150),
+                            color: Colors.deepPurple,
                           ),
                         ),
                         child: Column(
@@ -314,9 +314,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Color.fromARGB(255, 84, 55, 117),
+                          color: Colors.deepPurple,
                           border: Border.all(
-                            color: Color.fromARGB(255, 118, 91, 150),
+                            color: Colors.deepPurple,
                           ),
                         ),
                         child: Column(
@@ -357,7 +357,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 84, 55, 117),
+                    color: Colors.deepPurple,
                   ),
                   child: Container(
                     child: Text(''),
@@ -381,7 +381,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Color.fromARGB(255, 84, 55, 117),
+                    color: Colors.deepPurple,
                   ),
                   child: Container(
                     child: Text(''),
