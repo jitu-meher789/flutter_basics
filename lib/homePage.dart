@@ -22,15 +22,15 @@ class _homePageState extends State<homePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 26, 24, 24),
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 84, 55, 117),
-        title: Text('Home'),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Color.fromARGB(255, 84, 55, 117),
+      //   title: Text('Home'),
+      //   centerTitle: true,
+      // ),
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: Duration(milliseconds: 300),
-        color: Color.fromARGB(255, 84, 55, 117),
-        backgroundColor: Color.fromARGB(255, 26, 24, 24),
+        color: Colors.deepPurple,
+        backgroundColor: Colors.transparent,
         height: 60,
         items: [
           Icon(
@@ -82,72 +82,10 @@ class _homePageState extends State<homePage> {
             );
           }
           else{
-            return Mylogin(title: '');
+            return Mylogin(title: ''); 
           }
         }
       ),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // backgroundColor: Color.fromARGB(255, 26, 24, 24),
-      /*appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 84, 55, 117),
-        title: Text('Home'),
-        centerTitle: true,
-      ),
-      */
-
-
-      // bottomNavigationBar: CurvedNavigationBar(
-      //   animationDuration: Duration(milliseconds: 300),
-      //   color: Color.fromARGB(255, 84, 55, 117),
-      //   backgroundColor: Color.fromARGB(255, 26, 24, 24),
-      //   height: 60,
-      //   items: [
-      //     Icon(
-      //       Icons.home,
-      //       size: 30,
-      //     ),
-      //     Icon(
-      //       Icons.event_available,
-      //       size: 30,
-      //     ),
-      //     Icon(
-      //       Icons.notifications,
-      //       size: 30,
-      //     ),
-      //     InkWell(
-      //       onTap: (){
-      //         Navigator.push(
-      //           context,
-      //           MaterialPageRoute(
-      //             builder: (BuildContext context) => const myProfile(),
-      //           ),
-      //         );
-      //       },
-      //       child: Icon(
-      //         Icons.person,
-      //         size: 30,
-      //       ),
-      //     ),
-      //   ],
-      // ),
-      
-
-      

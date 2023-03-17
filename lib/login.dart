@@ -12,6 +12,8 @@ import 'package:flutter_basics/register.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'forget_Password_Page.dart';
+
 class Mylogin extends StatefulWidget {
   const Mylogin({super.key, required String title});
 
@@ -232,7 +234,7 @@ class _MyloginState extends State<Mylogin> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const register()));
+                                      builder: (context) =>  forgetPasswordPage()));
                             },
                             child: Text(
                               'Forgot Password',
@@ -253,3 +255,4 @@ class _MyloginState extends State<Mylogin> {
     );
   }
 }
+ 

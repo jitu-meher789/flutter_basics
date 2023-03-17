@@ -348,7 +348,7 @@ class _registerState extends State<register> {
                         // if(isValidForm){
                         //   signUp();
                         // }
-                        signUp();
+                        signUp().then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Mylogin(title: 'title'))));
                       },
                       child: const Text("Create Account"),
                     ),
