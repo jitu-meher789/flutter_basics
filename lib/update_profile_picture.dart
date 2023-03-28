@@ -37,14 +37,14 @@ class _updateImageState extends State<updateImage> {
               Container(
                 child: ElevatedButton(
                   onPressed: lello, 
-                  child: Text('Select File'),
+                  child: Text('Select File',style: TextStyle(color: Colors.green),),
                 ),
               ),
               SizedBox(height: 20,),
               Container(
                 child: ElevatedButton(
                   onPressed: hello, 
-                  child: Text('Upload File'),
+                  child: Text('Upload File',style: TextStyle(color: Colors.green),),
                 ),
               ),
             ],
