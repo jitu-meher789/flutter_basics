@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_basics/login.dart';
+import 'package:flutter_basics/login_page.dart';
 
 class forgetPasswordPage extends StatefulWidget {
   const forgetPasswordPage({super.key});
@@ -56,10 +56,11 @@ class _forgetPasswordPageState extends State<forgetPasswordPage> {
                   Container(
                     child: Text(
                       'Mail Address Here',
-                      style: TextStyle(
+                        style: TextStyle(
                           fontSize: 21,
                           color: Colors.deepPurple,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w500,
+                        ),
                     ),
                   ),
                   SizedBox(

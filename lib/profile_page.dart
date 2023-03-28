@@ -1,12 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'dart:ui';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_basics/updateUser_page.dart';
+import 'package:flutter_basics/update_profile_picture.dart';
 
 class myProfile extends StatefulWidget {
   const myProfile({super.key});
@@ -15,7 +14,23 @@ class myProfile extends StatefulWidget {
   State<myProfile> createState() => _myProfileState();
 }
 
+String name = '';
+String branch = '';
+String registrationNo = '';
+String academics = '';
+String birthDate = '';
+String phoneNo = '';
+String universityName = '';
+String collegeName = '';
+String email = '';
+
 class _myProfileState extends State<myProfile> {
+  @override
+  void initState() {
+    super.initState();
+    getDataOnce_getADocuments();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,29 +38,8 @@ class _myProfileState extends State<myProfile> {
         backgroundColor: Color.fromARGB(255, 26, 24, 24),
         appBar: AppBar(
           backgroundColor: Colors.deepPurple,
-          title: Text('My Profile'),
+          title: Text("My Profile"),
           centerTitle: true,
-        ),
-        bottomNavigationBar: CurvedNavigationBar(
-          color: Colors.deepPurple,
-          backgroundColor: Color.fromARGB(255, 26, 24, 24),
-          height: 60,
-          items: [
-            Icon(
-              Icons.home,
-              size: 30,
-            ),
-            Icon(
-              Icons.event_available,
-              size: 30, 
-              
-            ),
-            Icon(
-              Icons.notifications,
-              size: 30,
-            ),
-            Icon(Icons.person),
-          ],
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -66,19 +60,24 @@ class _myProfileState extends State<myProfile> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 240, 226, 255),
-                            borderRadius: BorderRadius.circular(60),
-                            border: Border.all(
-                              color: Colors.deepPurple,
-                              style: BorderStyle.solid,
-                            )),
-                        // color: Colors.white,
-                        padding: EdgeInsets.only(left: 20),
-                        height: 120,
-                        width: 120,
-                        child: Image.asset('assets/logos/KarkhanaLogo_01.png'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,MaterialPageRoute(builder: (context) => updateImage()));
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 240, 226, 255),
+                              borderRadius: BorderRadius.circular(60),
+                              border: Border.all(
+                                color: Colors.deepPurple,
+                                style: BorderStyle.solid,
+                              )),
+                          // color: Colors.white,
+                          padding: EdgeInsets.only(left: 20),
+                          height: 120,
+                          width: 120,
+                          child: Image.asset('assets/logos/KarkhanaLogo_01.png'),
+                        ),
                       ),
                       Container(
                         child: Column(
@@ -87,14 +86,14 @@ class _myProfileState extends State<myProfile> {
                             children: [
                               Container(
                                 child: Text(
-                                  'Name : Jitu Meher',
+                                  'Name : $name',
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
                               Container(
-                                child: Text('Branch : Computer Science',
+                                child: Text('Branch : $branch',
                                     style: TextStyle(
                                         fontSize: 15.3,
                                         fontWeight: FontWeight.w500)),
@@ -139,7 +138,7 @@ class _myProfileState extends State<myProfile> {
                             ),
                             SizedBox(height: 10),
                             Container(
-                              child: Text("36373SOA123",
+                              child: Text(registrationNo,
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -170,7 +169,7 @@ class _myProfileState extends State<myProfile> {
                             ),
                             SizedBox(height: 10),
                             Container(
-                              child: Text('2023 - 2027',
+                              child: Text(academics,
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -217,7 +216,7 @@ class _myProfileState extends State<myProfile> {
                             ),
                             SizedBox(height: 10),
                             Container(
-                              child: Text("23/05/23",
+                              child: Text(birthDate,
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -248,7 +247,7 @@ class _myProfileState extends State<myProfile> {
                             ),
                             SizedBox(height: 10),
                             Container(
-                              child: Text("8798764534",
+                              child: Text(phoneNo,
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -278,7 +277,6 @@ class _myProfileState extends State<myProfile> {
                     children: [
                       Container(
                         width: 150,
-                        // height: 80,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -290,13 +288,13 @@ class _myProfileState extends State<myProfile> {
                         child: Column(
                           children: [
                             Container(
-                              child: Text('',
+                              child: Text('University',
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.white38)),
                             ),
                             SizedBox(height: 10),
                             Container(
-                              child: Text("",
+                              child: Text(universityName,
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -310,7 +308,6 @@ class _myProfileState extends State<myProfile> {
                       ),
                       Container(
                         width: 150,
-                        // height: 100,
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -322,13 +319,13 @@ class _myProfileState extends State<myProfile> {
                         child: Column(
                           children: [
                             Container(
-                              child: Text('',
+                              child: Text('College Name',
                                   style: TextStyle(
                                       fontSize: 15, color: Colors.white38)),
                             ),
                             SizedBox(height: 10),
                             Container(
-                              child: Text("",
+                              child: Text(collegeName,
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -347,7 +344,7 @@ class _myProfileState extends State<myProfile> {
 
                 Container(
                   child: Text(
-                    "University Name",
+                    "Email Address",
                     style: TextStyle(color: Colors.white38),
                   ),
                 ),
@@ -360,31 +357,69 @@ class _myProfileState extends State<myProfile> {
                     color: Colors.deepPurple,
                   ),
                   child: Container(
-                    child: Text(''),
+                    child: Center(
+                        child: Text(
+                      email,
+                      style: TextStyle(color: Colors.white38),
+                    )),
                   ),
                 ),
 
                 SizedBox(
-                  width: 20,
+                  width: 30,
                 ),
 
-                Container(
-                  child: Text(
-                    "Email",
-                    style: TextStyle(color: Colors.white38),
-                  ),
+                SizedBox(
+                  height: 20,
                 ),
 
-                Container(
-                  width: double.infinity,
-                  margin: EdgeInsets.symmetric(horizontal: 15),
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Colors.deepPurple,
-                  ),
-                  child: Container(
-                    child: Text(''),
+                GestureDetector(
+                  onTap: () {
+                    showDialog<void>(
+                        context: context,
+                        builder: (BuildContext dailogcontext) {
+                          return update();
+                        });
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => update()));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text('User Profile Updated', style: TextStyle(color: Colors.white),),
+                      ),
+                    );
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 125, right: 125),
+                    child: Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.symmetric(horizontal: 15),
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        color: Colors.deepPurple,
+                      ),
+                      child: Container(
+                        child: Center(
+                            child: RichText(
+                          text: TextSpan(
+                            children: [
+                              WidgetSpan(
+                                child: Icon(
+                                  Icons.edit,
+                                  size: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              TextSpan(
+                                style: TextStyle(fontSize: 20),
+                                text: " Edit",
+                              ),
+                            ],
+                          ),
+                        )),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -396,3 +431,26 @@ class _myProfileState extends State<myProfile> {
   }
 }
 
+void getDataOnce_getADocuments() {
+  final User? user = FirebaseAuth.instance.currentUser!;
+  final uid = FirebaseAuth.instance.currentUser!.uid;
+  final db = FirebaseFirestore.instance;
+  final userDocRef = db.collection('users').doc(uid);
+  userDocRef.get().then(
+    (DocumentSnapshot doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      name = data['Name'];
+      branch = data['Branch'];
+      registrationNo = data['Registration No'];
+      academics = data['Academics'];
+      birthDate = data['Birth Date'];
+      phoneNo = data['Phone No'];
+      universityName = data['University Name'];
+      collegeName = data['College Name'];
+      email = data['Email'];
+
+      print(name);
+    },
+    onError: (e) => print("Error getting document: $e"),
+  );
+}

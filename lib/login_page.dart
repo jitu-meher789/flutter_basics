@@ -6,9 +6,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_basics/homePage.dart';
-import 'package:flutter_basics/myProfile.dart';
-import 'package:flutter_basics/register.dart';
+import 'package:flutter_basics/home_Page.dart';
+import 'package:flutter_basics/navigationBar_page.dart';
+import 'package:flutter_basics/profile_page.dart';
+import 'package:flutter_basics/register_page.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -67,14 +68,6 @@ class _MyloginState extends State<Mylogin> {
                 bottomRight: Radius.circular(20),
                 bottomLeft: Radius.circular(20)),
           ),
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: Color.fromARGB(137, 253, 253, 253),
-              size: 30,
-            ),
-            onPressed: () {},
-          ),
           elevation: 0.00,
           backgroundColor: Colors.deepPurple,
         ),
@@ -93,14 +86,14 @@ class _MyloginState extends State<Mylogin> {
                   decoration: InputDecoration(
                     labelText: "Email",
                     labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 152, 154, 156),
+                      color: Colors.deepPurple,
                     ),
-                    hintText: "Email",
-                    hintStyle: TextStyle(
-                      color: Color.fromARGB(255, 152, 154, 156),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
+                    // hintText: "Email",
+                    // hintStyle: TextStyle(
+                    //   color: Color.fromARGB(255, 152, 154, 156),
+                    //   fontWeight: FontWeight.w400,
+                    //   fontSize: 20,
+                    // ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
@@ -132,14 +125,14 @@ class _MyloginState extends State<Mylogin> {
                   decoration: InputDecoration(
                     labelText: "Password",
                     labelStyle: TextStyle(
-                      color: Color.fromARGB(255, 152, 154, 156),
+                      color: Colors.deepPurple,
                     ),
-                    hintText: "Password",
-                    hintStyle: TextStyle(
-                      color: Color.fromARGB(255, 152, 154, 156),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
+                    // hintText: "Password",
+                    // hintStyle: TextStyle(
+                    //   color: Color.fromARGB(255, 152, 154, 156),
+                    //   fontWeight: FontWeight.w400,
+                    //   fontSize: 20,
+                    // ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
@@ -155,7 +148,7 @@ class _MyloginState extends State<Mylogin> {
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(0.0),
                       child: Icon(
-                        Icons.lock,
+                        Icons.fingerprint,
                         color: Colors.grey,
                       ), // icon is 48px widget.
                     ),
@@ -182,13 +175,13 @@ class _MyloginState extends State<Mylogin> {
                         ),
                       ),
                       onPressed: () {
-                        signIn().then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => homePage())));            
-                          // Navigator.pushReplacement(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //       builder: (BuildContext context) => 
-                          //            homePage()));
-                        //then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const homePage())));
+                        signIn().then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => buttomNavigation())));
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            duration: Duration(seconds: 3),
+                            backgroundColor: Colors.green,
+                            content: Text('You are logged in', style: TextStyle(color: Colors.white),)),
+                        );            
                       },
                       child: const Text("Login"),
                     ),

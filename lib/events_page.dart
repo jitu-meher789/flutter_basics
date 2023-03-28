@@ -15,7 +15,7 @@ class _eventsState extends State<events> {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Text('Comming Soon'),
+          child: Text('Events Page'),
         ),
       ),
     );

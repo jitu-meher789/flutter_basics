@@ -48,6 +48,7 @@ dependencies:
   firebase_storage: ^11.0.14
   fluttertoast: ^8.2.1
   form_field_validator: ^1.1.0
+  image_picker: ^0.8.7
 
 dev_dependencies:
   flutter_test:
