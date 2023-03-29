@@ -28,6 +28,7 @@ class _updateImageState extends State<updateImage> {
    print("file Name : " + fileName);
     
     return Scaffold(
+      backgroundColor:  Color.fromARGB(255, 26, 24, 24),
       body: Container(
         padding: EdgeInsets.all(32),
         child: Center(
@@ -42,7 +43,7 @@ class _updateImageState extends State<updateImage> {
                 SizedBox(height: 8,),
                 Text(
                   fileName,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 16, color: Colors.white,fontWeight: FontWeight.w500),
                 ),
                 SizedBox(height: 48),
                 ButtonWidget(
@@ -103,7 +104,7 @@ class _updateImageState extends State<updateImage> {
 
           return Text(
             '$percentage %',
-            style: TextStyle(fontSize: 15,color: Colors.black, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 15,color: Colors.white, fontWeight: FontWeight.bold),
           );
 
         }else{
