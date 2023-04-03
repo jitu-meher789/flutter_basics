@@ -9,7 +9,7 @@ import 'package:flutter_basics/notifications_page.dart';
 import 'package:flutter_basics/profile_page.dart';
 
 class buttomNavigation extends StatefulWidget {
-  const buttomNavigation({super.key});
+  const buttomNavigation({super.key, required String title});
 
   @override
   State<buttomNavigation> createState() => _buttomNavigationState();
@@ -18,7 +18,7 @@ class buttomNavigation extends StatefulWidget {
 class _buttomNavigationState extends State<buttomNavigation> {
   int index = 0;
   final screens = [
-    homePage(),
+    homePage(title: '',),
     events(),
     notifications(),
     myProfile(),
@@ -29,14 +29,14 @@ class _buttomNavigationState extends State<buttomNavigation> {
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          indicatorColor: Colors.deepPurple,
+          indicatorColor:Color.fromRGBO(13,167,159,10),
           labelTextStyle: MaterialStateProperty.all(
             TextStyle(fontSize: 10,fontWeight: FontWeight.w500),
           )
         ),
         child: NavigationBar(
           height: 60,
-          backgroundColor:  Colors.deepPurple,
+          backgroundColor: Color.fromRGBO(13,167,159,10),
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           selectedIndex: index,
           animationDuration: Duration(seconds: 2),

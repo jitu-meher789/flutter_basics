@@ -4,8 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/login_page.dart';
+import 'package:flutter_basics/splash.dart';
 import 'package:flutter_basics/updateUser_page.dart';
 import 'package:flutter_basics/update_profile_picture.dart';
+import 'package:flutter/src/rendering/box.dart';
 
 class myProfile extends StatefulWidget {
   const myProfile({super.key});
@@ -23,6 +26,7 @@ String phoneNo = '';
 String universityName = '';
 String collegeName = '';
 String email = '';
+String imageUrl = '';
 
 class _myProfileState extends State<myProfile> {
   @override
@@ -37,7 +41,7 @@ class _myProfileState extends State<myProfile> {
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 26, 24, 24),
         appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Color.fromRGBO(13, 167, 159, 10),
           title: Text("My Profile"),
           centerTitle: true,
         ),
@@ -48,13 +52,13 @@ class _myProfileState extends State<myProfile> {
                 Container(
                   height: 140,
                   decoration: BoxDecoration(
-                      color: Colors.deepPurple,
+                      color: Color.fromRGBO(13, 167, 159, 10),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30),
                       ),
                       border: Border.all(
-                        color: Colors.deepPurple,
+                        color: Color.fromRGBO(13, 167, 159, 10),
                         style: BorderStyle.solid,
                       )),
                   child: Row(
@@ -62,22 +66,36 @@ class _myProfileState extends State<myProfile> {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context,MaterialPageRoute(builder: (context) => updateImage()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => updateImage()));
                         },
                         child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 240, 226, 255),
-                              borderRadius: BorderRadius.circular(60),
-                              border: Border.all(
-                                color: Colors.deepPurple,
-                                style: BorderStyle.solid,
-                              )),
-                          // color: Colors.white,
-                          padding: EdgeInsets.only(left: 20),
-                          height: 120,
-                          width: 120,
-                          child: Image.asset('assets/logos/KarkhanaLogo_01.png'),
-                        ),
+                            decoration: BoxDecoration(
+                                color: Color.fromARGB(255, 240, 226, 255),
+                                borderRadius: BorderRadius.circular(60),
+                                border: Border.all(
+                                  color: Color.fromRGBO(13, 167, 159, 10),
+                                  style: BorderStyle.solid,
+                                )),
+                            // color: Colors.white,
+                            padding: EdgeInsets.only(left: 0),
+                            height: 120,
+                            width: 120,
+                            child: Container(
+                              padding: EdgeInsets.all(3), // Border width
+                              decoration: BoxDecoration(
+                                  color: Color.fromARGB(255, 207, 210, 211),
+                                  shape: BoxShape.circle),
+                              child: ClipOval(
+                                child: SizedBox.fromSize(
+                                  size: Size.fromRadius(48), // Image radius
+                                  child: Image.network(imageUrl,
+                                      fit: BoxFit.cover),
+                                ),
+                              ),
+                            )),
                       ),
                       Container(
                         child: Column(
@@ -89,6 +107,7 @@ class _myProfileState extends State<myProfile> {
                                   'Name : $name',
                                   style: TextStyle(
                                       fontSize: 20,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
@@ -96,6 +115,7 @@ class _myProfileState extends State<myProfile> {
                                 child: Text('Branch : $branch',
                                     style: TextStyle(
                                         fontSize: 15.3,
+                                        color: Colors.white,
                                         fontWeight: FontWeight.w500)),
                               ),
                             ]),
@@ -114,7 +134,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.deepPurple,
+                    color: Color.fromRGBO(13, 167, 159, 10),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -124,9 +144,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13, 167, 159, 10),
                           border: Border.all(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13, 167, 159, 10),
                           ),
                         ),
                         child: Column(
@@ -134,7 +154,9 @@ class _myProfileState extends State<myProfile> {
                             Container(
                               child: Text('Registration No',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.white38)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
                             SizedBox(height: 10),
                             Container(
@@ -142,7 +164,7 @@ class _myProfileState extends State<myProfile> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.white38)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
@@ -155,9 +177,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13, 167, 159, 10),
                           border: Border.all(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13, 167, 159, 10),
                           ),
                         ),
                         child: Column(
@@ -165,7 +187,9 @@ class _myProfileState extends State<myProfile> {
                             Container(
                               child: Text('Academics',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.white38)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
                             SizedBox(height: 10),
                             Container(
@@ -173,7 +197,7 @@ class _myProfileState extends State<myProfile> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.white38)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
@@ -192,7 +216,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.deepPurple,
+                    color: Color.fromRGBO(13, 167, 159, 10),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -202,9 +226,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13, 167, 159, 10),
                           border: Border.all(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13, 167, 159, 10),
                           ),
                         ),
                         child: Column(
@@ -212,7 +236,9 @@ class _myProfileState extends State<myProfile> {
                             Container(
                               child: Text('Birth Date',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.white38)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
                             SizedBox(height: 10),
                             Container(
@@ -220,7 +246,7 @@ class _myProfileState extends State<myProfile> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.white38)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
@@ -233,9 +259,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13, 167, 159, 10),
                           border: Border.all(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13, 167, 159, 10),
                           ),
                         ),
                         child: Column(
@@ -243,7 +269,9 @@ class _myProfileState extends State<myProfile> {
                             Container(
                               child: Text('Phone No',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.white38)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
                             SizedBox(height: 10),
                             Container(
@@ -251,7 +279,7 @@ class _myProfileState extends State<myProfile> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.white38)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
@@ -270,7 +298,7 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.deepPurple,
+                    color: Color.fromRGBO(13, 167, 159, 10),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -280,9 +308,9 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13, 167, 159, 10),
                           border: Border.all(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13, 167, 159, 10),
                           ),
                         ),
                         child: Column(
@@ -290,7 +318,9 @@ class _myProfileState extends State<myProfile> {
                             Container(
                               child: Text('University',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.white38)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
                             SizedBox(height: 10),
                             Container(
@@ -298,7 +328,7 @@ class _myProfileState extends State<myProfile> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.white38)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
@@ -311,17 +341,20 @@ class _myProfileState extends State<myProfile> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13, 167, 159, 10),
                           border: Border.all(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13, 167, 159, 10),
                           ),
                         ),
                         child: Column(
+                          // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Container(
                               child: Text('College Name',
                                   style: TextStyle(
-                                      fontSize: 15, color: Colors.white38)),
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white)),
                             ),
                             SizedBox(height: 10),
                             Container(
@@ -329,7 +362,7 @@ class _myProfileState extends State<myProfile> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: Colors.white38)),
+                                      color: Colors.white)),
                             ),
                           ],
                         ),
@@ -345,7 +378,7 @@ class _myProfileState extends State<myProfile> {
                 Container(
                   child: Text(
                     "Email Address",
-                    style: TextStyle(color: Colors.white38),
+                    style: TextStyle(color: Colors.white),
                   ),
                 ),
                 Container(
@@ -354,72 +387,78 @@ class _myProfileState extends State<myProfile> {
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
-                    color: Colors.deepPurple,
+                    color: Color.fromRGBO(13, 167, 159, 10),
                   ),
                   child: Container(
                     child: Center(
                         child: Text(
                       email,
-                      style: TextStyle(color: Colors.white38),
+                      style: TextStyle(color: Colors.white),
                     )),
                   ),
                 ),
 
                 SizedBox(
-                  width: 30,
+                  height: 10,
                 ),
 
-                SizedBox(
-                  height: 20,
-                ),
-
-                GestureDetector(
-                  onTap: () {
-                    showDialog<void>(
-                        context: context,
-                        builder: (BuildContext dailogcontext) {
-                          return update();
-                        });
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => update()));
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        backgroundColor: Colors.green,
-                        content: Text('User Profile Updated', style: TextStyle(color: Colors.white),),
-                      ),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 125, right: 125),
-                    child: Container(
-                      width: double.infinity,
-                      margin: EdgeInsets.symmetric(horizontal: 15),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Colors.deepPurple,
-                      ),
-                      child: Container(
-                        child: Center(
-                            child: RichText(
-                          text: TextSpan(
-                            children: [
-                              WidgetSpan(
-                                child: Icon(
-                                  Icons.edit,
-                                  size: 20,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              TextSpan(
-                                style: TextStyle(fontSize: 20),
-                                text: " Edit",
-                              ),
-                            ],
+                Container(
+                  padding :EdgeInsets.only(left: 100, right: 100),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(
+                              13, 167, 159, 10), // background (button) color
+                          foregroundColor: Colors.white,
+                          textStyle: TextStyle(
+                              fontSize: 15,
+                          ), // foreground (text) color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                        )),
+                        ),
+                        onPressed: () {
+                          showDialog<void>(
+                              context: context,
+                              builder: (BuildContext dailogcontext) {
+                                return update();
+                              });
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => update()));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              backgroundColor: Colors.green,
+                              content: Text(
+                                'User Profile Updated',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text('    Edit   '),
                       ),
-                    ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromRGBO(
+                              13, 167, 159, 10), // background (button) color
+                          foregroundColor: Colors.white,
+                          textStyle: TextStyle(
+                              fontSize: 15,
+                          ), // foreground (text) color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                        onPressed: () async {
+                           FirebaseAuth.instance.signOut().then((value) => Navigator.pushReplacement(context, MaterialPageRoute(builder:(context) => Mylogin(title: '',))));
+                        },
+                        child: Text('Logout'),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -431,10 +470,15 @@ class _myProfileState extends State<myProfile> {
   }
 }
 
+// functions
 void getDataOnce_getADocuments() {
   final User? user = FirebaseAuth.instance.currentUser!;
   final uid = FirebaseAuth.instance.currentUser!.uid;
+  print("UID----" + uid);
+  print(" email ----${user?.email}");
+  print("email-1----" + email);
   final db = FirebaseFirestore.instance;
+
   final userDocRef = db.collection('users').doc(uid);
   userDocRef.get().then(
     (DocumentSnapshot doc) {
@@ -448,8 +492,10 @@ void getDataOnce_getADocuments() {
       universityName = data['University Name'];
       collegeName = data['College Name'];
       email = data['Email'];
+      imageUrl = data['Image Url'];
 
-      print(name);
+      print("Name ---" + name);
+      print("Url ---" + imageUrl);
     },
     onError: (e) => print("Error getting document: $e"),
   );

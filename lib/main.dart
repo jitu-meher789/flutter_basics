@@ -3,6 +3,7 @@ import 'package:flutter_basics/splash.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'dart:html';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,4 +26,5 @@ class MyApp extends StatelessWidget {
       home: const Splash(),
     );
   }
+  
 }

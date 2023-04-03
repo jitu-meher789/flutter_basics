@@ -44,7 +44,7 @@ class _forgetPasswordPageState extends State<forgetPasswordPage> {
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color.fromRGBO(13,167,159,10),
       ),
       body: Container(
         child: Column(
@@ -58,7 +58,7 @@ class _forgetPasswordPageState extends State<forgetPasswordPage> {
                       'Mail Address Here',
                         style: TextStyle(
                           fontSize: 21,
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13,167,159,10),
                           fontWeight: FontWeight.w500,
                         ),
                     ),
@@ -71,7 +71,7 @@ class _forgetPasswordPageState extends State<forgetPasswordPage> {
                       'Enter the email address associated \n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t with your account',
                       style: TextStyle(
                           fontSize: 16,
-                          color: Colors.deepPurple,
+                          color: Color.fromRGBO(13,167,159,10),
                           fontWeight: FontWeight.w500),
                     ),
                   ),
@@ -86,28 +86,22 @@ class _forgetPasswordPageState extends State<forgetPasswordPage> {
                     padding: EdgeInsets.only(left: 30, right: 30),
                     child: TextField(
                       controller: _emailControaller,
-                      style: TextStyle(color: Color.fromARGB(255, 152, 154, 156), height: 0.3),
+                      style: TextStyle(color: Color.fromARGB(255, 255, 255, 255), height: 0.3),
                       textAlign: TextAlign. center,
                       decoration: InputDecoration(
                         labelText: "Email",
                         labelStyle: TextStyle(
-                          color: Color.fromARGB(255, 152, 154, 156),
-                        ),
-                        hintText: "Type your email",
-                        hintStyle: TextStyle(
-                          color: Color.fromARGB(255, 152, 154, 156),
-                          fontWeight: FontWeight.w400,
-                          fontSize: 20,
+                          color: Color.fromRGBO(13,167,159,10),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                              color: Colors.deepPurple, width: 2.0),
+                              color: Color.fromRGBO(13,167,159,10), width: 2.0),
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(10),
                           borderSide: BorderSide(
-                            color: Colors.deepPurple,
+                            color: Color.fromRGBO(13,167,159,10),
                             width: 1.5,
                           ),
                         ),
@@ -124,7 +118,7 @@ class _forgetPasswordPageState extends State<forgetPasswordPage> {
                         passwordReset();
                       },
                       child: Text('Reset Password'),
-                      color: Colors.deepPurple,
+                      color: Color.fromRGBO(13,167,159,10),
                       
                     ),
                   ),

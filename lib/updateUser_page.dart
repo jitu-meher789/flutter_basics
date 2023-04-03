@@ -152,7 +152,7 @@ class _updateState extends State<update> {
           'Phone No': phoneNo,
           'University Name' : universityName,
           'College Name' : collegeName,
-          'Email' : user?.email,
+          'Email': user?.email,
         });
     }
 }

@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -15,9 +17,14 @@ class _eventsState extends State<events> {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Text('Events Page'),
+          child: Text('Events Page',style: TextStyle(color: Color.fromRGBO(13, 167, 159, 10))),
         ),
       ),
     );
   }
-}
+} 
+
+
+
+
+// keytool -list -v -keystore C:\Users\fablab\.android\debug.keystore -alias androiddebugkey -storepass android -keypass android

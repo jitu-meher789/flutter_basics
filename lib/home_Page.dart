@@ -11,7 +11,7 @@ import 'events_page.dart';
 import 'login_page.dart';
 
 class homePage extends StatefulWidget {
-  const homePage({super.key});
+  const homePage({super.key, required String title});
 
   @override
   State<homePage> createState() => _homePageState();
@@ -25,7 +25,7 @@ class _homePageState extends State<homePage> {
   int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   final screens = [
-    homePage(),
+    homePage(title: '',),
     events(),
     notifications(),
     myProfile(),
@@ -50,14 +50,17 @@ class _homePageState extends State<homePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Signed in as : ${user.email}',
-                          style: TextStyle(color: Colors.deepPurple)),
-                      MaterialButton(
-                        onPressed: () {
-                          FirebaseAuth.instance.signOut();
-                        },
-                        color: Colors.deepPurple,
-                        child: Text('Log out'),
+                          style: TextStyle(
+                            color: Color.fromRGBO(13,167,159,10)
+                          )
                       ),
+                      // MaterialButton(
+                      //   onPressed: () {
+                      //     FirebaseAuth.instance.signOut();
+                      //   },
+                      //   color: Color.fromRGBO(13,167,159,10),
+                      //   child: Text('Log out'),
+                      // ),
                     ],
                   ),
                 );

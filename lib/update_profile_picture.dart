@@ -1,5 +1,7 @@
 
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_basics/profile_page.dart';
 import 'package:path/path.dart';
 import 'package:file_picker/file_picker.dart';
@@ -53,6 +55,14 @@ class _updateImageState extends State<updateImage> {
                 ),
                 SizedBox(height: 20,),
                 task != null ? buildUploadStatus(task!) : Container(),
+
+                SizedBox(height: 48,),
+                ElevatedButton(
+                  onPressed: (){
+                    Navigator.pop(context,);
+                  },
+                  child: const Text('Go Back'),
+                ),
             ],
           ),
         ),
@@ -80,7 +90,8 @@ class _updateImageState extends State<updateImage> {
     Future uploadFile() async {
       if(file == null) return;
 
-      final fileName = file!.path;
+      final fileName = basename(file!.path);
+      // print("File Name-----" + fileName);
       final destination = '/images/$fileName';
       task = FirebaseApi.uploadFile(destination,file!);
       setState(() {});
@@ -89,6 +100,7 @@ class _updateImageState extends State<updateImage> {
 
       final snapshot = await task!.whenComplete(() {});
       final urlDownload = await snapshot.ref.getDownloadURL();
+      update(urlDownload);
     }
 
 
@@ -111,8 +123,21 @@ class _updateImageState extends State<updateImage> {
           return Container();
         }
       },
-    );
+   );
 
 
 
+
+    void update(String urlDownload) async {
+    final User? user = FirebaseAuth.instance.currentUser!;
+    final uid = FirebaseAuth.instance.currentUser!.uid;
+    print(uid);
+    print(urlDownload);
+
+    final userDocRef = FirebaseFirestore.instance.collection('users').doc(uid);
+
+        userDocRef.update({
+          'Image Url' : urlDownload,
+        });
+    }
 }

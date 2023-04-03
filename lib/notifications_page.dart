@@ -15,7 +15,7 @@ class _notificationsState extends State<notifications> {
     return Scaffold(
       body: Center(
         child: Container(
-          child: Text('Notification Page'),
+          child: Text('Notification Page', style: TextStyle(color: Color.fromRGBO(13, 167, 159, 10))),
         ),
       ),
     );

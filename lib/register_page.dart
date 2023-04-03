@@ -98,7 +98,7 @@ class _registerState extends State<register> {
                 bottomLeft: Radius.circular(25)),
           ),
           elevation: 0.00,
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Color.fromRGBO(13,167,159,10),
         ),
         backgroundColor: Color.fromARGB(255, 19, 19, 19),
         body: Container(
@@ -111,27 +111,21 @@ class _registerState extends State<register> {
               children: [
                 TextFormField(
                   controller: _yourNameController,
-                  style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: "Your Name",
                     labelStyle: TextStyle(
-                      color: Colors.deepPurple,
+                      color: Color.fromRGBO(13,167,159,10),
                     ),
-                    // hintText: "Your Name",
-                    // hintStyle: TextStyle(
-                    //   color: Colors.white24,
-                    //   fontWeight: FontWeight.w400,
-                    //   fontSize: 20,
-                    // ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                          BorderSide(color: Color.fromRGBO(13,167,159,10), width: 2.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: Colors.deepPurple,
+                        color: Color.fromRGBO(13,167,159,10),
                         width: 1.5,
                       ),
                     ),
@@ -139,7 +133,7 @@ class _registerState extends State<register> {
                       padding: EdgeInsets.all(0.0),
                       child: Icon(
                         Icons.person,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ), // icon is 48px widget.
                     ),
                   ),
@@ -154,27 +148,21 @@ class _registerState extends State<register> {
                 ),
                 TextFormField(
                   controller: _userNameContorller,
-                  style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: "User Name",
                     labelStyle: TextStyle(
-                      color: Colors.deepPurple,
+                      color:Color.fromRGBO(13,167,159,10),
                     ),
-                    // hintText: "User Name",
-                    // hintStyle: TextStyle(
-                    //   color: Color.fromARGB(255, 152, 154, 156),
-                    //   fontWeight: FontWeight.w400,
-                    //   fontSize: 20,
-                    // ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                          BorderSide(color: Color.fromRGBO(13,167,159,10), width: 2.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: Colors.deepPurple,
+                        color:Color.fromRGBO(13,167,159,10),
                         width: 1.5,
                       ),
                     ),
@@ -182,7 +170,7 @@ class _registerState extends State<register> {
                       padding: EdgeInsets.all(0.0),
                       child: Icon(
                         Icons.person_search,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ), // icon is 48px widget.
                     ),
                   ),
@@ -197,27 +185,22 @@ class _registerState extends State<register> {
                 ),
                 TextFormField(
                   controller: _emailController,
-                  style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: "Email",
                     labelStyle: TextStyle(
-                      color: Colors.deepPurple,
+                      color:Color.fromRGBO(13,167,159,10),
                     ),
-                    // hintText: "Email",
-                    // hintStyle: TextStyle(
-                    //   color: Color.fromARGB(255, 152, 154, 156),
-                    //   fontWeight: FontWeight.w400,
-                    //   fontSize: 20,
-                    // ),
+                    
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                          BorderSide(color: Color.fromRGBO(13,167,159,10), width: 2.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: Colors.deepPurple,
+                        color:Color.fromRGBO(13,167,159,10),
                         width: 1.5,
                       ),
                     ),
@@ -225,7 +208,7 @@ class _registerState extends State<register> {
                       padding: EdgeInsets.all(0.0),
                       child: Icon(
                         Icons.email,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ), // icon is 48px widget.
                     ),
                   ),
@@ -240,27 +223,22 @@ class _registerState extends State<register> {
                 TextFormField(
                   controller: _passwordController,
                   obscureText: true,
-                  style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: "Password",
                     labelStyle: TextStyle(
-                      color: Colors.deepPurple,
+                      color: Color.fromRGBO(13,167,159,10),
                     ),
-                    // hintText: "Password",
-                    // hintStyle: TextStyle(
-                    //   color: Color.fromARGB(255, 152, 154, 156),
-                    //   fontWeight: FontWeight.w400,
-                    //   fontSize: 20,
-                    // ),
+                  
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                          BorderSide(color: Color.fromRGBO(13,167,159,10), width: 2.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: Colors.deepPurple,
+                        color: Color.fromRGBO(13,167,159,10),
                         width: 1.5,
                       ),
                     ),
@@ -268,7 +246,7 @@ class _registerState extends State<register> {
                       padding: EdgeInsets.all(0.0),
                       child: Icon(
                         Icons.fingerprint,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ), // icon is 48px widget.
                     ),
                   ),
@@ -286,11 +264,11 @@ class _registerState extends State<register> {
                 TextFormField(
                   obscureText: true,
                   controller: _confirmedPasswordController,
-                  style: TextStyle(color: Color.fromARGB(255, 152, 154, 156)),
+                  style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
                     labelText: "Confirm Password",
                     labelStyle: TextStyle(
-                      color: Colors.deepPurple,
+                      color:Color.fromRGBO(13,167,159,10),
                     ),
                     // hintText: "Confirm Password",
                     // hintStyle: TextStyle(
@@ -301,12 +279,12 @@ class _registerState extends State<register> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide:
-                          BorderSide(color: Colors.deepPurple, width: 2.0),
+                          BorderSide(color: Color.fromRGBO(13,167,159,10), width: 2.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: Colors.deepPurple,
+                        color:Color.fromRGBO(13,167,159,10),
                         width: 1.5,
                       ),
                     ),
@@ -314,7 +292,7 @@ class _registerState extends State<register> {
                       padding: EdgeInsets.all(0.0),
                       child: Icon(
                         Icons.fingerprint,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ), // icon is 48px widget.
                     ),
                   ),
@@ -332,7 +310,7 @@ class _registerState extends State<register> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
-                          Colors.deepPurple, // background (button) color
+                          Color.fromRGBO(13,167,159,10), // background (button) color
                       foregroundColor: Colors.white,
                       textStyle: TextStyle(
                           fontSize: 19,
@@ -369,7 +347,7 @@ class _registerState extends State<register> {
                       Container(
                         child: Text('Already have an account?',
                             style:
-                                TextStyle(fontSize: 17, color: Colors.white24)),
+                                TextStyle(fontSize: 17, color: Colors.white)),
                       ),
                       Container(
                         child: TextButton(
@@ -384,7 +362,7 @@ class _registerState extends State<register> {
                             child: Text(
                               'Login',
                               style: TextStyle(
-                                  color: Colors.deepPurple,
+                                  color: Color.fromRGBO(13,167,159,10),
                                   fontWeight: FontWeight.w900),
                             )),
                       )
